@@ -1,0 +1,55 @@
+services:
+  fogon-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fogon-app
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - ./html:/var/www
+    networks:
+      - fogon-network
+    depends_on:
+      fogon-db:
+        condition: service_healthy
+
+  fogon-web:
+    image: nginx:alpine
+    container_name: fogon-web
+    restart: unless-stopped
+    ports:
+      - "8000:80"
+    volumes:
+      - ./html:/var/www
+      - ./Docker/nginx:/etc/nginx/conf.d
+    networks:
+      - fogon-network
+    depends_on:
+      fogon-app:
+        condition: service_started
+
+  fogon-db:
+    image: mysql:8.0
+    container_name: fogon-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: fogon_db
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - fogon-network
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -proot --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+
+networks:
+  fogon-network:
+    driver: bridge
+
+volumes:
+  dbdata:
