@@ -27,7 +27,8 @@ class GoogleController extends Controller
             if (! in_array($emailRecibido, $allowedEmails, true)) {
                 return redirect()
                     ->route('login')
-                    ->with('error', 'Acceso denegado: Tu cuenta no tiene permisos de administrador.');
+                    ->with('error_title', 'Acceso denegado')
+                    ->with('error', 'Tu cuenta no tiene permisos de administrador.');
             }
 
             $finduser = User::where('google_id', $user->id)
@@ -60,7 +61,8 @@ class GoogleController extends Controller
         } catch (Exception $e) {
             return redirect()
                 ->route('login')
-                ->with('error', 'Error de autenticacion con Google.');
+                ->with('error_title', 'Error de autenticacion')
+                ->with('error', 'No se pudo iniciar sesion con Google. Intenta de nuevo.');
         }
     }
 }

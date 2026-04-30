@@ -10,6 +10,10 @@
         scroll-behavior: smooth;
     }
 
+    [x-cloak] {
+        display: none !important;
+    }
+
     body {
         @apply bg-brand-night font-sans text-brand-cream;
         background-image:
