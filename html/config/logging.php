@@ -9,12 +9,12 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Default Log Channel
+    | Canal de log por defecto
     |--------------------------------------------------------------------------
     |
-    | This option defines the default log channel that is utilized to write
-    | messages to your logs. The value provided here should match one of
-    | the channels present in the list of "channels" configured below.
+    | Esta opción define el canal de log por defecto que se utiliza para
+    | escribir mensajes en tus logs. El valor indicado debe coincidir con
+    | uno de los canales presentes en la lista de "channels" configurada abajo.
     |
     */
 
@@ -22,12 +22,12 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Deprecations Log Channel
+    | Canal de log de deprecaciones
     |--------------------------------------------------------------------------
     |
-    | This option controls the log channel that should be used to log warnings
-    | regarding deprecated PHP and library features. This allows you to get
-    | your application ready for upcoming major versions of dependencies.
+    | Esta opción controla el canal de log que se usará para registrar avisos
+    | sobre funcionalidades obsoletas de PHP y librerías. Esto te permite
+    | preparar la aplicación para futuras versiones mayores de dependencias.
     |
     */
 
@@ -38,15 +38,15 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Log Channels
+    | Canales de log
     |--------------------------------------------------------------------------
     |
-    | Here you may configure the log channels for your application. Laravel
-    | utilizes the Monolog PHP logging library, which includes a variety
-    | of powerful log handlers and formatters that you're free to use.
+    | Aquí puedes configurar los canales de log para tu aplicación. Laravel
+    | utiliza la librería de logging Monolog para PHP, que incluye una variedad
+    | de handlers y formatters potentes que puedes usar libremente.
     |
-    | Available drivers: "single", "daily", "slack", "syslog",
-    |                    "errorlog", "monolog", "custom", "stack"
+    | Drivers disponibles: "single", "daily", "slack", "syslog",
+    |                     "errorlog", "monolog", "custom", "stack"
     |
     */
 

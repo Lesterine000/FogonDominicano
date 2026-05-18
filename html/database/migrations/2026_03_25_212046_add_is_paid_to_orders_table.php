@@ -7,22 +7,22 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Ejecuta las migraciones.
      */
     public function up(): void
     {
         Schema::table('orders', function (Blueprint $table) {
-            //
+            // Sin cambios.
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Revierte las migraciones.
      */
     public function down(): void
     {
         Schema::table('orders', function (Blueprint $table) {
-            //
+            // Sin cambios.
         });
     }
 };

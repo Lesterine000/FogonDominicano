@@ -7,13 +7,13 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Default Database Connection Name
+    | Nombre de la conexión a base de datos por defecto
     |--------------------------------------------------------------------------
     |
-    | Here you may specify which of the database connections below you wish
-    | to use as your default connection for database operations. This is
-    | the connection which will be utilized unless another connection
-    | is explicitly specified when you execute a query / statement.
+    | Aquí puedes especificar cuál de las conexiones de base de datos de abajo
+    | quieres usar como conexión por defecto para las operaciones. Esta será
+    | la conexión utilizada salvo que se especifique explícitamente otra al
+    | ejecutar una consulta / sentencia.
     |
     */
 
@@ -21,12 +21,12 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Database Connections
+    | Conexiones de base de datos
     |--------------------------------------------------------------------------
     |
-    | Below are all of the database connections defined for your application.
-    | An example configuration is provided for each database system which
-    | is supported by Laravel. You're free to add / remove connections.
+    | A continuación se listan todas las conexiones de base de datos definidas
+    | para tu aplicación. Se proporciona un ejemplo para cada sistema de base
+    | de datos soportado por Laravel. Puedes añadir / eliminar conexiones.
     |
     */
 
@@ -110,20 +110,20 @@ return [
             'charset' => env('DB_CHARSET', 'utf8'),
             'prefix' => '',
             'prefix_indexes' => true,
-            // 'encrypt' => env('DB_ENCRYPT', 'yes'),
-            // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
+            // Ejemplo: 'encrypt' => env('DB_ENCRYPT', 'yes'),
+            // Ejemplo: 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
         ],
 
     ],
 
     /*
     |--------------------------------------------------------------------------
-    | Migration Repository Table
+    | Tabla de repositorio de migraciones
     |--------------------------------------------------------------------------
     |
-    | This table keeps track of all the migrations that have already run for
-    | your application. Using this information, we can determine which of
-    | the migrations on disk haven't actually been run on the database.
+    | Esta tabla lleva el control de todas las migraciones que ya se han
+    | ejecutado en tu aplicación. Con esta información, se puede determinar
+    | qué migraciones del disco aún no se han ejecutado en la base de datos.
     |
     */
 
@@ -134,12 +134,12 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Redis Databases
+    | Bases de datos Redis
     |--------------------------------------------------------------------------
     |
-    | Redis is an open source, fast, and advanced key-value store that also
-    | provides a richer body of commands than a typical key-value system
-    | such as Memcached. You may define your connection settings here.
+    | Redis es un almacén clave-valor open source, rápido y avanzado que
+    | además ofrece un conjunto de comandos más rico que un sistema típico
+    | como Memcached. Aquí puedes definir los ajustes de conexión.
     |
     */
 

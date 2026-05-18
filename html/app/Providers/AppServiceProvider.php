@@ -8,20 +8,20 @@ use Illuminate\Support\ServiceProvider;
 class AppServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * Registra los servicios de la aplicación.
      */
     public function register(): void
     {
-        //
+        // Sin servicios adicionales que registrar.
     }
 
     /**
-     * Bootstrap any application services.
+     * Inicializa los servicios de la aplicación.
      */
     public function boot(): void
     {
         Blade::directive('euro', function (string $expression): string {
-            // Use an HTML entity to avoid encoding issues across environments/editors.
+            // Usar una entidad HTML para evitar problemas de codificación entre entornos/editores.
             return "<?php echo number_format((float) ({$expression}), 2, ',', '.') . ' &euro;'; ?>";
         });
     }

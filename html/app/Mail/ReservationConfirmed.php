@@ -14,7 +14,7 @@ class ReservationConfirmed extends Mailable
     public $order;
 
     /**
-     * Create a new message instance.
+     * Crea una nueva instancia del mensaje.
      */
     public function __construct(Order $order)
     {
@@ -23,7 +23,7 @@ class ReservationConfirmed extends Mailable
     }
 
     /**
-     * Build the message.
+     * Construye el mensaje.
      */
     public function build()
     {
