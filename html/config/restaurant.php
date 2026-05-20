@@ -8,7 +8,7 @@ return [
         'RESTAURANT_CUSTOM_ORDER_URL',
         'https://wa.me/34652700611?text=Hola,%20quiero%20hacer%20un%20pedido%20personalizado'
     ),
-    'home_hero_image' => env('RESTAURANT_HOME_HERO_IMAGE', 'images/Gemini_Generated_Image_eklv9oeklv9oeklv.png'),
+    'home_hero_image' => env('RESTAURANT_HOME_HERO_IMAGE', 'images/Gemini_Generated_Image_eklv9oeklv9oeklv-1600.jpg'),
     'home_hero_focus' => env('RESTAURANT_HOME_HERO_FOCUS', 'center center'),
     'home_chef_image' => env('RESTAURANT_HOME_CHEF_IMAGE', 'images/veronica.jpeg'),
     'home_chef_focus' => env('RESTAURANT_HOME_CHEF_FOCUS', 'center top'),

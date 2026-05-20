@@ -38,8 +38,32 @@
 
     $heroImage = $localMediaUrl(
         config('restaurant.home_hero_image'),
-        'images/Gemini_Generated_Image_eklv9oeklv9oeklv.png'
+        'images/Gemini_Generated_Image_eklv9oeklv9oeklv-1600.jpg'
     );
+
+    $heroImageConfig = (string) config('restaurant.home_hero_image', '');
+    $heroImageCandidate = filled($heroImageConfig)
+        ? ltrim($heroImageConfig, '/')
+        : 'images/Gemini_Generated_Image_eklv9oeklv9oeklv-1600.jpg';
+    $heroImageSrcset = null;
+    $heroImageSizes = null;
+
+    if (
+        $heroImageCandidate === 'images/Gemini_Generated_Image_eklv9oeklv9oeklv.png'
+        && file_exists(public_path('images/Gemini_Generated_Image_eklv9oeklv9oeklv-1600.jpg'))
+    ) {
+        $heroImageCandidate = 'images/Gemini_Generated_Image_eklv9oeklv9oeklv-1600.jpg';
+        $heroImage = asset($heroImageCandidate);
+    }
+
+    if (Str::endsWith($heroImageCandidate, '-1600.jpg')) {
+        $heroImageCandidate800 = Str::replaceEnd('-1600.jpg', '-800.jpg', $heroImageCandidate);
+
+        if (file_exists(public_path($heroImageCandidate)) && file_exists(public_path($heroImageCandidate800))) {
+            $heroImageSrcset = asset($heroImageCandidate800) . ' 800w, ' . asset($heroImageCandidate) . ' 1600w';
+            $heroImageSizes = '(max-width: 1024px) 100vw, 1600px';
+        }
+    }
 
     $menuDishImage = $activeDishImage
         ? asset('storage/' . $activeDishImage)
@@ -63,6 +87,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>El Fogon Dominicano | Sabor Auténtico en cada ración</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.cdnfonts.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/sinteca">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="brand-shell home-reference-copy antialiased">
@@ -85,6 +114,13 @@
         <section id="inicio" class="home-anchor-offset relative min-h-screen overflow-hidden">
             <img
                 src="{{ $heroImage }}"
+                @if ($heroImageSrcset)
+                    srcset="{{ $heroImageSrcset }}"
+                    sizes="{{ $heroImageSizes }}"
+                @endif
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
                 alt="{{ $activeDishName ? 'Imagen principal de ' . $activeDishName : 'Imagen principal de El Fogon Dominicano' }}"
                 class="absolute inset-0 h-full w-full object-cover {{ $heroImageFocusClass }}"
             >
@@ -149,6 +185,8 @@
                                 <img
                                     src="{{ $menuDishImage }}"
                                     alt="{{ $activeDish->name }}"
+                                    loading="lazy"
+                                    decoding="async"
                                     class="h-full w-full object-cover"
                                 >
 
@@ -241,6 +279,8 @@
                                 <img
                                     src="{{ $menuDishImage }}"
                                     alt="{{ $activeDish?->name ?: 'Menu del dia' }}"
+                                    loading="lazy"
+                                    decoding="async"
                                     class="h-full w-full object-cover"
                                 >
                             </div>
@@ -280,6 +320,8 @@
                                 <img
                                     src="{{ $chefImage }}"
                                     alt="Chef de El Fogon Dominicano"
+                                    loading="lazy"
+                                    decoding="async"
                                     class="h-full w-full object-cover {{ $chefImageFocusClass }}"
                                 >
                             </div>
